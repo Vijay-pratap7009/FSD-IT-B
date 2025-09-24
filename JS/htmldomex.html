@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dom Example</title>
+    <script>
+        function addparagraph() {
+            const para = document.createElement("p");
+            const node = document.createTextNode("This is a new paragraph.");
+            para.style.color = "blue"; 
+            para.appendChild(node);
+            const id = document.getElementById("para1");
+            id.appendChild(para);
+        }
+    </script>
+</head>
+<body>
+    <div id="para1">
+        <h1>HTML DOM Example</h1>
+        <button onclick="addparagraph()">Add Paragraph</button>
+    </div>
+</body>
+</html>
