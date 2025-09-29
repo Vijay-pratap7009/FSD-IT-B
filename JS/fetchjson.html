@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Fetcjing data from Dummy json.com</h2>
+    <div id="user-data">
+        <script>
+            const url = "https://dummyjson.com/users/1";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const userDiv = document.getElementById('user-data');
+                    userDiv.innerHTML = `
+                        <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
+                        <p><strong>Age:</strong> ${data.age}</p>
+                        <p><strong>Email:</strong> ${data.email}</p>
+                        <p><strong>Phone:</strong> ${data.phone}</p>
+                        <img src="${data.image}" width="100" alt="Avatar">
+                    `;
+                })
+                .catch(err => {
+                    document.getElementById('user-data').textContent = "Error fetching data.";
+                })
+                .finally(() => {
+                    console.log("fetching done");
+                });
+        </script>
+
+    </div>
+</body>
+</html>
