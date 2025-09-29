@@ -1,0 +1,55 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Data</title>
+</head>
+<body>
+    <h1>Fetch User Data from GitHub API</h1>
+    <script src="jsfetch.js">
+        const url ="https://api.github.com/users/Vijay-pratap7009";
+const Pr=fetch(url);
+Pr.then((response)=>{ 
+    return response.json()})
+.then((data)=>{console.log("Data:",data);})
+.catch((err)=>{console.log("Error:",err);})
+.finally(()=>{console.log("fetching done");})
+
+    </script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Data</title>
+</head>
+<body>
+    <h1>Fetch User Data from GitHub API</h1>
+    <div id="user-data"></div>
+    <script>
+        const url = "https://api.github.com/users/Vijay-pratap7009";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const userDiv = document.getElementById('user-data');
+                userDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${data.name}</p>
+                    <p><strong>Username:</strong> ${data.login}</p>
+                    <p><strong>Followers:</strong> ${data.followers}</p>
+                    <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+                    <img src="${data.avatar_url}" width="100" alt="Avatar">
+                `;
+            })
+            .catch(err => {
+                document.getElementById('user-data').textContent = "Error fetching data.";
+            })
+            .finally(() => {
+                console.log("fetching done");
+            });
+    </script>
+</body>
+</html>
