@@ -1,0 +1,15 @@
+const child=document.createElement('div');
+child.className="card";
+const img=document.createElement('img');
+img.src="https://m.media-amazon.com/images/I/51Zymoq7UnL._SX325_BO1,204,203,200_.jpg";
+img.alt="book image";
+img.height="200";
+img.width="150";
+const title=document.createElement('h3');
+title.innerText="Price :350";
+child.append(img);
+child.append(title);
+const root=document.getElementById('root');
+root.append(child);
+const parent=document.getElementById('root');
+parent.append(child);
