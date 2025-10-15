@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card{
+            border:1px solid black;
+            width:250px;
+            height:400px;
+            text-align:center;
+            box-shadow:2px 2px 5px grey;
+            border-radius:10px;
+            margin-top:20px;
+            background-color:rgb(220, 224, 224);
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center> <h2>Book Store</h2>
+    <div id="root"></div>
+    </center>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script>
+        function Book(props){
+            const image = React.createElement('img', {
+                src: props.src,
+                width: "220",
+                height: "270",
+                alt: "book image"
+            });
+            const title = React.createElement('h3', null, props.title);
+            const h4 = React.createElement('h4', null, `Price :${props.price}`);
+            const button = React.createElement('button', null, 'Add to Cart');
+            return React.createElement('div', {className: "card"}, image, title, h4, button);
+        }
+        const books = [
+            {
+                src: "https://m.media-amazon.com/images/I/91ccGUt2sbL.jpg",
+                title: "Physics",
+                price: "₹350"
+            },
+            {
+                src: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS2CH6jKQHJ8cXp5GE_akZhl_V9vMQro_IzsIqMSa8XWsj-uUFIm1tQmJxumWQeCLGa5XK4z5TChxBJUXZSrnLD0iAZeRdIiyLFrsj-m42LuIOHgqbmvCAT",
+                title: "Chemistry",
+                price: "₹250"   
+            },
+            {
+                src: "https://m.media-amazon.com/images/I/513byzZGrWL._SY522_.jpg",
+                title: "Mathematics",
+                price: "₹150"   
+            }
+        ];
+        const parent = document.getElementById('root');
+        const root = ReactDOM.createRoot(parent);
+        root.render(
+            React.createElement(
+                React.Fragment,
+                null,
+                books.map((book, idx) =>
+                    React.createElement(Book, { src: book.src, title: book.title, price: book.price, key: idx })
+                )
+            )
+        );
+    </script>
+</body>
+</html>
